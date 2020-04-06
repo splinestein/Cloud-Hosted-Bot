@@ -29,4 +29,9 @@ async def on_member_remove(m):
 async def latency(ctx):
     await ctx.send(f'Response @ -> {round(client.latency * 1000)}ms')
 
+@client.command(pass_context=True)
+async def giverole(ctx, user: discord.Member, role: discord.Role):
+    await user.add_roles(role)
+    #await ctx.send(f"hey {ctx.author.name}, {user.name} has been giving a role called: {role.name}")
+
 client.run('Njk2NTAwODI4MzU3NTI1NjM0.XoppCw.xi99nJizoTtnnkq-kJikM7BKwDE')
