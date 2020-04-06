@@ -26,15 +26,7 @@ async def on_member_remove(m):
     await channel.send(str(m)+' left.')
 
 @client.command()
-async def on_message(msg):
-    if msg.author == client.user:
-        return
-    if msg.author.bot:
-        return
-    if msg.content.startswith('--'):
-        message = msg[2:]
-        if message == "latency":
-            channel = client.get_channel(696503641309446144)
-            await channel.send(f'Latency: {round(client.latency * 1000)}ms')
+async def latency(ctx):
+    await ctx.send(f'Response @ -> {round(client.latency * 1000)}ms')
 
 client.run('Njk2NTAwODI4MzU3NTI1NjM0.XoppCw.xi99nJizoTtnnkq-kJikM7BKwDE')
