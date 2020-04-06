@@ -10,7 +10,7 @@ async def on_ready():
     
     t = time.localtime()
     current_time = time.strftime("%H:%M:%S", t)
-    print("Activated. @ -> "+ str(current_time))
+    print("v. 0.1 Activated. @ -> "+ str(current_time))
     
 
 @client.event
