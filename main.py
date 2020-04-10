@@ -48,7 +48,7 @@ async def giverole(ctx, user: discord.Member, role: discord.Role):
 async def corona(ctx):
     url = 'https://www.worldometers.info/coronavirus/?'
     req = urllib.request.Request(url, headers= {"User-Agent": "Mozilla/5.0"})
-    
+
     resp = urllib.request.urlopen(req)
     respData = resp.read()
 
@@ -63,7 +63,9 @@ async def corona(ctx):
     totaldeaths = paragraphs2.split(' ')[0]
     totalrecovered = paragraphs2.split(' ')[1]
 
-    await ctx.send("Cases: "+totalcases, "Deaths: "+totaldeaths, "Recovered: "+totalrecovered)
+    cdr = "Cases: "+totalcases, "Deaths: "+totaldeaths, "Recovered: "+totalrecovered
+
+    await ctx.send(cdr)
 
 
 client.run('Njk2NTAwODI4MzU3NTI1NjM0.XoppCw.xi99nJizoTtnnkq-kJikM7BKwDE')
