@@ -9,7 +9,7 @@ url = 'https://www.worldometers.info/coronavirus/?'
 
 import time
 
-client = commands.Bot(command_prefix = '--')
+client = commands.Bot(command_prefix = '-')
 
 @client.event
 async def on_ready():
@@ -63,8 +63,7 @@ async def corona(ctx):
     totaldeaths = paragraphs2.split(' ')[0]
     totalrecovered = paragraphs2.split(' ')[1]
 
-    cdr = "Cases: "+totalcases, "Deaths: "+totaldeaths, "Recovered: "+totalrecovered
-
+    cdr = "Total cases: "+str(totalcases)+", Total deaths: "+str(totaldeaths)+", Total recovered: "+str(totalrecovered)
     await ctx.send(cdr)
 
 
