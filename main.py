@@ -31,7 +31,8 @@ async def latency(ctx):
 
 @client.command(pass_context=True)
 async def giverole(ctx, user: discord.Member, role: discord.Role):
-    if str(ctx.message.author.id) == 677924052958183435:
+    print(ctx.message.author.id)
+    if ctx.message.author.id == 677924052958183435:
         await user.add_roles(role)
     else:
         await ctx.send("Only j90 can perform this command.")
