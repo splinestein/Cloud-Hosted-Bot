@@ -63,7 +63,7 @@ async def corona(ctx):
     totaldeaths = paragraphs2.split(' ')[0]
     totalrecovered = paragraphs2.split(' ')[1]
 
-    cdr = "Total cases: "+str(totalcases)+", Total deaths: "+str(totaldeaths)+", Total recovered: "+str(totalrecovered)
+    cdr = "Cases :mask: : "+str(totalcases)+", Total deaths :skull: : "+str(totaldeaths)+", Total recovered :thumbsup: : "+str(totalrecovered)
     await ctx.send(cdr)
 
 
