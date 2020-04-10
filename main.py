@@ -1,6 +1,12 @@
 import discord
 from discord.ext import commands
 
+import urllib.request
+import urllib.parse
+import re
+
+url = 'https://www.worldometers.info/coronavirus/?'
+
 import time
 
 client = commands.Bot(command_prefix = '--')
@@ -37,5 +43,27 @@ async def giverole(ctx, user: discord.Member, role: discord.Role):
     else:
         await ctx.send("Only j90 can perform this command.")
     #await ctx.send(f"hey {ctx.author.name}, {user.name} has been giving a role called: {role.name}")
+
+@client.command()
+async def corona(ctx):
+    url = 'https://www.worldometers.info/coronavirus/?'
+    req = urllib.request.Request(url, headers= {"User-Agent": "Mozilla/5.0"})
+    
+    resp = urllib.request.urlopen(req)
+    respData = resp.read()
+
+    paragraphs = re.findall(r'<div class="maincounter-number">(.*?)></div>',str(respData))
+
+    totalcases = re.findall(r'<span style="color:#aaa">(.*?)</span>',str(paragraphs))
+    totalcases = "".join(totalcases)
+    totalcases = totalcases.replace(" ", "")
+
+    paragraphs2 = re.findall(r'<span>(.*?)</span>',str(paragraphs))
+    paragraphs2 = " ".join(paragraphs2)
+    totaldeaths = paragraphs2.split(' ')[0]
+    totalrecovered = paragraphs2.split(' ')[1]
+
+    await ctx.send("Cases: "+totalcases, "Deaths: "+totaldeaths, "Recovered: "+totalrecovered)
+
 
 client.run('Njk2NTAwODI4MzU3NTI1NjM0.XoppCw.xi99nJizoTtnnkq-kJikM7BKwDE')
